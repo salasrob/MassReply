@@ -12,7 +12,7 @@ namespace MassReplyApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class EmailController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
@@ -21,10 +21,9 @@ namespace MassReplyApp.Controllers
 
         private readonly IEmailSender _emailSender;
         private readonly IEmailGetter _emailGetter;
+        private readonly ILogger<EmailController> _logger;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEmailSender emailSender, IEmailGetter emailGetter)
+        public EmailController(ILogger<EmailController> logger, IEmailSender emailSender, IEmailGetter emailGetter)
         {
             _logger = logger;
             _emailSender = emailSender;
@@ -40,10 +39,7 @@ namespace MassReplyApp.Controllers
             _emailGetter.GetAll(service);
 
             var message = new Message(new string[] { "devmonicasandoval@gmail.com" }, "Test emai", "This is a test email from C#");
-
             //_emailSender.SendEmail(message);
-
-
         }
     }
 }

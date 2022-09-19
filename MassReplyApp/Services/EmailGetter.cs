@@ -52,9 +52,7 @@ namespace MassReplyApp
                 return service;
 
             }
-           
-
-       
+            
            public void GetAll(GmailService service)
             {
             string host = _emailConfig.From;
@@ -66,9 +64,7 @@ namespace MassReplyApp
                 listRequest.IncludeSpamTrash = false;
                 listRequest.Q = "is:unread";
             //TODO:Filter messages, job related messages only
-
                 ListMessagesResponse listMessagesResponse = listRequest.Execute();
-
                 if (listMessagesResponse != null)
                 {
                     foreach (Message message in listMessagesResponse.Messages)
@@ -80,7 +76,6 @@ namespace MassReplyApp
                         if (msg != null)
                         {
                             email.MessageId = message.Id;
-
                             foreach (var messageParts in msg.Payload.Headers)
                             {
                                 if (messageParts.Name == "From")
@@ -101,10 +96,7 @@ namespace MassReplyApp
                                 }
                                 Console.WriteLine(email);
                             }
-
-                         
                             //List<string> files = new List<string>();
-
                             //IList<MessagePart> parts = msg.Payload.Parts;
                             //if (parts != null)
                             //{
@@ -114,25 +106,14 @@ namespace MassReplyApp
                             //        {
                             //            string attId = part.Body.AttachmentId;
                             //            MessagePartBody attachment = service.Users.Messages.Attachments.Get(host, msg.Id, attId).Execute();
-
                             //        }
-
                             //   }
                             // }
-
                         }
                     }
                 }
-
                 Console.WriteLine(listMessagesResponse);
-         
                 return;
             }
-
-
-      
-
-        
     }
 }
-

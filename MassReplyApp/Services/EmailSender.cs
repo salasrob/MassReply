@@ -22,7 +22,6 @@ namespace MassReplyApp.Services
             Send(emailMessage);
         }
 
-
         private MimeMessage CreateEmailMessage(Message message)
         {
             var emailMessage = new MimeMessage();
@@ -46,7 +45,6 @@ namespace MassReplyApp.Services
                     client.Authenticate(_emailConfig.UserName, _emailConfig.Password);
 
                     client.Send(mailMessage);
-                    client.
                 }
                 catch(Exception ex)
                 {
@@ -59,6 +57,5 @@ namespace MassReplyApp.Services
                 }
             }
         }
-
     }
 }
